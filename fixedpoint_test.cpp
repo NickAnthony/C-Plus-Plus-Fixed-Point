@@ -3,61 +3,38 @@
 
 void test_init(){
 	FixedPoint<2,2> myfixed;
-
 	FixedPoint<6,12> fixed_max(-FLT_MAX);
-	//std::cout << "fixed_max" << fixed_max << std::endl;
-
 	FixedPoint<6,6> fixed_a = NULL;
-	//std::cout << "fixed_a: " << fixed_a << std::endl;
-
 	FixedPoint<6,6> fixed_b(NULL);
-	//std::cout << "fixed_b: " << fixed_b << std::endl;
 
 	float r = 12.45678;
-	//std::cout << "(FixedPoint<6,6>) r: " << (FixedPoint<6,2>) r << std::endl;
-	//std::cout << "(FixedPoint<6,6>(r): " << FixedPoint<6,2>(r) << std::endl;
-
-
-	// float hello = std::min(double(1.2), double(1.2));
-	// double doubledouble = std::min(double(1.2), float(1.2));
-	// std::cout << "std::min " << std::min(double(1.2), float(1.2)) << std::endl;
 	
 	FixedPoint<5,32> fixed;
 	int a = 3;
 	fixed = a;
-	//std::cout << fixed << "\n";
 
 	int b = 140;
 	fixed = b;
-	//std::cout << fixed << "\n";
 
 	float c = 0.00000000001;
 	fixed = c;
-	//std::cout << fixed << "\n";
 	assert(fixed == 0.0);
 	
 
 	float d = 134.23;
 	fixed = d;
-	//std::cout << fixed << "\n";
 
 	double e = -3.98;
 	fixed = e;
-	//std::cout << fixed << "\n";
 
 	double f = 134.23;
 	fixed = f;
-	//std::cout << fixed << "\n";
 
 	float g = -3.95;
 	FixedPoint<3,3> fixed1 = g;
-	//std::cout << fixed1.raw_ << "\n";
 	FixedPoint<3,4> fixed2 = g;
-	//std::cout << fixed2 << "\n";
 	FixedPoint<3,5> fixed3 = g;
-	//std::cout << fixed3 << "\n";
 	FixedPoint<3,6> fixed4 = g;
-	//std::cout << fixed4 << "\n";
 
 	FixedPoint<10,10> fixed10((int) 5);
 	assert(fixed10 == 5);
@@ -72,7 +49,6 @@ void test_init(){
 	FixedPoint<10,10> *ptr = &fixed10c;
 
 	const FixedPoint<10,10>* fixed10d = const_cast<FixedPoint<10,10>* >(ptr);
-	//std::cout << fixed10d << "\n";
 
 }
 
@@ -83,18 +59,11 @@ void test_unary_fixed(){
 	FixedPoint<6,6> fixed6 = (int) 5;
 
 	fixed_base = fixed4;
-	//std::cout << "fixed_base = fixed4: " << fixed_base << "\n";
 	fixed_base = 10;
-	//std::cout << "fixed_base = 10: " << fixed_base << "\n";
 	fixed_base += fixed4;
-	//std::cout << "fixed_base += fixed4: " << fixed_base << "\n";
 	fixed_base -= fixed4;
-	//std::cout << "fixed_base -= fixed4: " << fixed_base << "\n";
 	fixed_base /= fixed4;
-	//std::cout << "fixed_base /= fixed4: " << fixed_base << "\n";
 	fixed_base *= fixed4;
-	// std::cout << "fixed_base *= fixed4: " << fixed_base << "\n";
-	// std::cout << "fixed_base after fixed4: " << fixed_base << "\n";
 	assert(fixed_base == 10);
 
 	fixed_base = fixed5;
@@ -103,7 +72,6 @@ void test_unary_fixed(){
 	fixed_base -= fixed5;
 	fixed_base /= fixed5;
 	fixed_base *= fixed5;
-	//std::cout << "fixed_base after fixed5: " << fixed_base << "\n";
 	assert(fixed_base == 10);
 
 	fixed_base = fixed6;
@@ -112,7 +80,6 @@ void test_unary_fixed(){
 	fixed_base -= fixed6;
 	fixed_base /= fixed6;
 	fixed_base *= fixed6;
-	//std::cout << "fixed_base after fixed6: " << fixed_base << "\n";
 	assert(fixed_base == 10);
 
 	printf("test_unary_fixed passed.\n");
@@ -131,7 +98,6 @@ void test_unary_primitives(){
 	assert(fixed_base == 10);
 	fixed_base /= int_a;
 	fixed_base *= int_a;
-	//std::cout << "fixed_base after fixed4: " << fixed_base << "\n";
 	assert(fixed_base == 10);
 
 	fixed_base = float_b;
@@ -141,7 +107,6 @@ void test_unary_primitives(){
 	assert(fixed_base == 10);
 	fixed_base /= float_b;
 	fixed_base *= float_b;
-	//std::cout << "fixed_base after fixed5: " << fixed_base << "\n";
 	assert(fixed_base == 10);
 
 	fixed_base = double_c;
@@ -151,7 +116,6 @@ void test_unary_primitives(){
 	assert(fixed_base == 10);
 	fixed_base /= double_c;
 	fixed_base *= double_c;
-	//std::cout << "fixed_base after fixed6: " << fixed_base << "\n";
 	assert(fixed_base == 10);
 
 	assert(+fixed_base == 10);
@@ -229,34 +193,6 @@ void test_comparison_primitives(){
 		printf("< operator failed: fixed.\n");
 		exit(1);	
 	}
-
-
-	// NOTE: This commented out section does not work: ambiguous
-	// if(int_a == fixed_base || float_b == fixed_base || double_c == fixed_base){
-	// 	printf("== operator failed: primitives.\n");
-	// 	exit(1);	
-	// }
-	// if(!(int_a != fixed_base || float_b != fixed_base || double_c != fixed_base)){
-	// 	printf("!= operator failed: fixed.\n");
-	// 	exit(1);	
-	// }
-	// if(!(int_a >= fixed_base || float_b >= fixed_base || double_c >= fixed_base)){
-	// 	printf(">= operator failed: fixed.\n");
-	// 	exit(1);	
-	// }
-	// if(int_a <= fixed_base || float_b <= fixed_base || double_c <= fixed_base){
-	// 	printf("<= operator failed: fixed.\n");
-	// 	exit(1);	
-	// }
-	// if(!(int_a > fixed_base || float_b > fixed_base || double_c > fixed_base)){
-	// 	printf("> operator failed: fixed.\n");
-	// 	exit(1);	
-	// }
-	// if(int_a < fixed_base || float_b < fixed_base || double_c < fixed_base){
-	// 	printf("< operator failed: fixed.\n");
-	// 	exit(1);	
-	// }
-	
 	printf("test_comparison_primitives passed.\n");
 }
 
@@ -269,37 +205,31 @@ void test_type_casting(){
 	assert(int_a == 10);
 	int_a = static_cast<int>(fixed_const);
 	assert(int_a == 12);
-	// std::cout << "int_a: " << static_cast<int>(fixed_base) << std::endl;
 
 	int int_a1 = (int) fixed_base;
 	assert(int_a1 == 10);
 	int_a1 = (int) fixed_const;
 	assert(int_a1 == 12);
-	// std::cout << "int_a1: " << (int) fixed_base << std::endl;
 
 	float float_b = static_cast<float>(fixed_base);
 	assert(float_b == 10.0);
 	float_b = static_cast<float>(fixed_const);
 	assert(float_b == 12.25);
-	// std::cout << "float_b: " << static_cast<float>(fixed_base) << std::endl;
 
 	float float_b1 = (float) fixed_base;
 	assert(float_b1 == 10.0);
 	float_b1 = (float) fixed_const;
 	assert(float_b1 == 12.25);
-	// std::cout << "float_b1: " << (float) fixed_base << std::endl;
 
 	double double_c = static_cast<double>(fixed_base);
 	assert(double_c == 10.0);
 	double_c = static_cast<double>(fixed_const);
 	assert(double_c == 12.25);
-	// std::cout << "double_c: " << static_cast<double>(fixed_base) << std::endl;
 
 	double double_c1 = (double) fixed_base;
 	assert(double_c1 == 10.0);
 	double_c1 = (double) fixed_const;
 	assert(double_c1 == 12.25);
-	// std::cout << "double_c1: " << (double) fixed_base << std::endl;
 
 	int_a = 10;
 
@@ -341,16 +271,6 @@ void test_type_casting(){
 	assert(ptr_16 == ptr);
 	const FixedPoint<5,5>* ptr_17 = (const FixedPoint<5,5>*) ptr_7;
 	assert(ptr_17 == ptr);
-
-	// if(int_a != (int)10 || int_a1 != (int)10){
-	// 	printf("type casting failed: int\n");
-	// }
-	// if(float_b != (float)10 || float_b1 != (float)10){
-	// 	printf("type casting failed: int\n");
-	// }
-	// if(double_c != (double)10 || double_c1 != (double)10){
-	// 	printf("type casting failed: int\n");
-	// }
 	
 	printf("test_type_casting passed.\n");
 }
@@ -363,62 +283,45 @@ void test_adding_fixed(){
 
 	fixed_base = fixed4 + fixed4;
 	assert(fixed_base == -10);
-	//std::cout << "fixed4 + fixed4: " << fixed_base << "\n";
 	fixed_base = fixed4 - fixed4;
 	assert(fixed_base == 0);
-	//std::cout << "fixed4 - fixed4: " << fixed_base << "\n";
 	fixed_base = fixed4 / fixed4;
 	assert(fixed_base == 1);
-	//std::cout << "fixed4 / fixed4: " << fixed_base << "\n";
 	fixed_base = fixed4 * fixed4;
-	//std::cout << "fixed4 * fixed4: " << fixed_base << "\n";
 
 	fixed_base = fixed4 + fixed5;
 	assert(fixed_base == 0);
-	//std::cout << "fixed4 + fixed5: " << fixed_base << "\n";
 	fixed_base = fixed4 - fixed5;
 	assert(fixed_base == -10);
-	//std::cout << "fixed4 - fixed5: " << fixed_base << "\n";
 	fixed_base = fixed4 / fixed5;
 	assert(fixed_base == -1);
-	//std::cout << "fixed4 / fixed5: " << fixed_base << "\n";
 	fixed_base = fixed4 * fixed5;
-	//std::cout << "fixed4 * fixed5: " << fixed_base << "\n";
 
 	fixed_base = fixed4 + fixed6;
 	assert(fixed_base == 0);
-	//std::cout << "fixed4 + fixed6: " << fixed_base << "\n";
 	fixed_base = fixed4 - fixed6;
 	assert(fixed_base == -10);
-	//std::cout << "fixed4 - fixed6: " << fixed_base << "\n";
 	fixed_base = fixed4 / fixed6;
 	assert(fixed_base == -1);
-	//std::cout << "fixed4 / fixed6: " << fixed_base << "\n";
 	fixed_base = fixed4 * fixed6;
-	//std::cout << "fixed4 * fixed6: " << fixed_base << "\n";
-
-	// //std::cout << "fixed_base after fixed4: " << fixed_base << "\n";
-	// assert(fixed_base == 10);
 
 	fixed_base = 10;
 
-	// fixed_base = fixed5;
-	// fixed_base = 10;
-	// fixed_base += fixed5;
-	// fixed_base -= fixed5;
-	// fixed_base /= fixed5;
-	// fixed_base *= fixed5;
-	// //std::cout << "fixed_base after fixed5: " << fixed_base << "\n";
-	// assert(fixed_base == 10);
+	fixed_base = fixed5;
+	fixed_base = 10;
+	fixed_base += fixed5;
+	fixed_base -= fixed5;
+	fixed_base /= fixed5;
+	fixed_base *= fixed5;
+	assert(fixed_base == 10);
 
-	// fixed_base = fixed6;
-	// fixed_base = 10;
-	// fixed_base += fixed6;
-	// fixed_base -= fixed6;
-	// fixed_base /= fixed6;
-	// fixed_base *= fixed6;
-	// //std::cout << "fixed_base after fixed6: " << fixed_base << "\n";
-	// assert(fixed_base == 10);
+	fixed_base = fixed6;
+	fixed_base = 10;
+	fixed_base += fixed6;
+	fixed_base -= fixed6;
+	fixed_base /= fixed6;
+	fixed_base *= fixed6;
+	assert(fixed_base == 10)
 
 	printf("test_adding_fixed passed.\n");
 }
@@ -432,66 +335,42 @@ void test_adding_primitives(){
 
 	fixed_base = fixed4 + int_a;
 	assert(fixed_base == 5);
-	//std::cout << "fixed4 + int_a: " << fixed_base << "\n";
 	fixed_base = fixed4 - int_a;
 	assert(fixed_base == 15);
-	//std::cout << "fixed4 - int_a: " << fixed_base << "\n";
 	fixed_base = fixed4 / int_a;
 	assert(fixed_base == -2);
-	//std::cout << "fixed4 / int_a: " << fixed_base << "\n";
 	fixed_base = fixed4 * int_a;
-	//std::cout << "fixed4 * int_a: " << fixed_base << "\n";
 
 	fixed_base = fixed4 + float_b;
 	assert(fixed_base == 5);
-	//std::cout << "fixed4 + float_b: " << fixed_base << "\n";
 	fixed_base = fixed4 - float_b;
 	assert(fixed_base == 15);
-	//std::cout << "fixed4 - float_b: " << fixed_base << "\n";
 	fixed_base = fixed4 / float_b;
 	assert(fixed_base == -2);
-	//std::cout << "fixed4 / float_b: " << fixed_base << "\n";
 	fixed_base = fixed4 * float_b;
-	//std::cout << "fixed4 * float_b: " << fixed_base << "\n";
 
 	fixed_base = fixed4 + double_c;
 	assert(fixed_base == 5);
-	//std::cout << "fixed4 + double_c: " << fixed_base << "\n";
 	fixed_base = fixed4 - double_c;
 	assert(fixed_base == 15);
-	//std::cout << "fixed4 - double_c: " << fixed_base << "\n";
 	fixed_base = fixed4 / double_c;
 	assert(fixed_base == -2);
-	//std::cout << "fixed4 / double_c: " << fixed_base << "\n";
 	fixed_base = fixed4 * double_c;
-	//std::cout << "fixed4 * double_c: " << fixed_base << "\n";
 
 	fixed_base = int_a + (int) fixed4;
-	//std::cout << "int_a + (int) fixed4 : " << fixed_base << "\n";
 	fixed_base = int_a - (int) fixed4;
-	//std::cout << "int_a - (int) fixed4: " << fixed_base << "\n";
 	fixed_base = int_a / (int) fixed4;
-	//std::cout << "int_a / (int) fixed4: " << fixed_base << "\n";
 	fixed_base = int_a * (int) fixed4;
-	//std::cout << "int_a * (int) fixed4: " << fixed_base << "\n";
 
 	fixed_base = float_b + (float) fixed4;
-	//std::cout << "float_b + (float) fixed4: " << fixed_base << "\n";
 	fixed_base = float_b - (float) fixed4;
-	//std::cout << "float_b - (float) fixed4: " << fixed_base << "\n";
 	fixed_base = float_b / (float) fixed4;
-	//std::cout << "float_b / (float) fixed4: " << fixed_base << "\n";
 	fixed_base = float_b * (float) fixed4;
-	//std::cout << "float_b * (float) fixed4: " << fixed_base << "\n";
 
 	fixed_base = double_c + (double) fixed4;
-	//std::cout << "double_c + (double) fixed4: " << fixed_base << "\n";
 	fixed_base = double_c - (double) fixed4;
-	//std::cout << "double_c - (double) fixed4: " << fixed_base << "\n";
 	fixed_base = double_c / (double) fixed4;
-	//std::cout << "double_c / (double) fixed4: " << fixed_base << "\n";
 	fixed_base = double_c * (double) fixed4;
-	//std::cout << "double_c * (double) fixed4: " << fixed_base << "\n";
 
 	printf("test_adding_primitives passed.\n");
 }
@@ -589,9 +468,6 @@ void test_max_min(){
 	assert(fixedpoint::min(mid, low) == low);
 	assert(fixedpoint::min(low, low) == low);
 
-	// std::cout << "min: " << mid << std::endl;
-	// std::cout << "fixedpoint::min: " << fixedpoint::min(high, mid) << std::endl;
-
 	assert(fixedpoint::min(high, mid) == mid);
 	assert(fixedpoint::min(mid, mid) == mid);
 	assert(fixedpoint::min(low, mid) == low);
@@ -639,9 +515,7 @@ void test_extra_functions(){
 	assert(fixedpoint::sqrt(b) == (float) 2.2);
 	assert(fixedpoint::sqrt(c) == (double) 2.2);
 
-
 	printf("test_extra_functions passed.\n");
-
 }
 
 void test_power_2(){
@@ -651,25 +525,16 @@ void test_power_2(){
 	high.SetPower2(true);
 	mid.SetPower2(true);
 	low.SetPower2(true);
-
-	// std::cout << "FixedPoint<6,4> = 25: " << high << std::endl;
-	// std::cout << "FixedPoint<2,4> = 0.071: " << mid << std::endl;
-	// std::cout << "FixedPoint<4,6> = 0.0003: " << low << std::endl;
-
 	assert(high == 32.0);
 	assert(mid == 0.0625);
 	assert(low == 0.0);
-
-
 	printf("test_power_2 passed.\n");
-
 }
 
 
 
 
 int main(){
-
 	test_init();
 	test_unary_fixed();
 	test_unary_primitives();
@@ -681,35 +546,10 @@ int main(){
 	test_abs();
 	test_increments();
 	test_pointer();
-
 	test_iteration();
 	test_max_min();
 	test_extra_functions();
-
 	test_power_2();
-
-
-	// Fixed fixed_num;
-	// fixed_num.SetBits(3,3);
-
-
-
-
-	// float a = 3.24;
-	// float b = 4.7656;
-	// float c = -4.999;
-	// float d = 4.999;
-	// float e = -0.03242;
-	// float f = -1.7656;
-	// float g = -13221.7656;
-
-	// printf("a:%f -> %f\n", a, fixed_num.RoundToFixed(a));
-	// printf("b:%f -> %f\n", b, fixed_num.RoundToFixed(b));
-	// printf("c:%f -> %f\n", c, fixed_num.RoundToFixed(c));
-	// printf("d:%f -> %f\n", d, fixed_num.RoundToFixed(d));
-	// printf("e:%f -> %f\n", e, fixed_num.RoundToFixed(e));
-	// printf("f:%f -> %f\n", f, fixed_num.RoundToFixed(f));
-	// printf("g:%f -> %f\n", g, fixed_num.RoundToFixed(g));
 
 	return 0;
 }

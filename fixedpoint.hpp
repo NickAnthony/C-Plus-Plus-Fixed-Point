@@ -146,10 +146,9 @@ class FixedPoint {
         }
         
 
-        /* Shift and assign operators */
+        /* TO DO: Shift and assign operators */
         // FixedPoint& operator<<=(int shift);
         // FixedPoint& operator>>=(int shift);
-
 
 
         /* Binary Arithmatic Operators: Primitives */
@@ -238,8 +237,6 @@ class FixedPoint {
             return(*this);
         }
 
-
-
         // Reciprocal operators: FixedPoint
 
         // overloaded prefix ++ operator
@@ -296,11 +293,8 @@ class FixedPoint {
         inline operator int8_t()        { return((int8_t) int_part_); }
         inline operator int8_t() const  { return((int8_t) int_part_); }
 
-        //inline operator FixedPoint()    { return(*this); }
         inline operator FixedPoint*()    { return(this); }
-        //inline operator const FixedPoint()   { return((const FixedPoint<INT_BITS,FRAC_BITS>) *this); }
         inline operator const FixedPoint *()   { return((const FixedPoint<INT_BITS,FRAC_BITS>*) this); }
-
 
         inline FixedPoint<INT_BITS, FRAC_BITS> abs(){
             return(FixedPoint<INT_BITS,FRAC_BITS>(*this) *= sign_);
@@ -330,10 +324,6 @@ class FixedPoint {
         {
             return os << std::fixed << std::setprecision(FRAC_BITS) << raw_;
         }
-        // inline std::ostream& operator<< (std::ostream& stream, const FixedPoint<INT_BITS, FRAC_BITS>& fixedPoint)
-        // {
-        //     return fixedPoint.emit(stream);
-        // }
 
         void Init();
         float RoundToFixedPoint(float x);
@@ -659,7 +649,6 @@ template class FixedPoint<4,8>;
 template class FixedPoint<4,7>;
 template class FixedPoint<4,6>;
 
-//#include "caffe/fixedpoint.cpp"
 #endif /* end of include guard: FIXEDPOINT_H__ */
 
 
