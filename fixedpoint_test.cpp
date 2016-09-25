@@ -20,7 +20,6 @@ void test_init(){
 	fixed = c;
 	assert(fixed == 0.0);
 	
-
 	float d = 134.23;
 	fixed = d;
 
@@ -49,7 +48,6 @@ void test_init(){
 	FixedPoint<10,10> *ptr = &fixed10c;
 
 	const FixedPoint<10,10>* fixed10d = const_cast<FixedPoint<10,10>* >(ptr);
-
 }
 
 void test_unary_fixed(){
@@ -123,7 +121,6 @@ void test_unary_primitives(){
 	fixed_base *= -1;
 	assert(+fixed_base == 10);
 	assert(-fixed_base == -10);
-
 
 	printf("test_unary_primitives passed.\n");
 }

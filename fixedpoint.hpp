@@ -369,7 +369,7 @@ template <int INT_BITS, int FRAC_BITS>
 void FixedPoint<INT_BITS,FRAC_BITS>::Init() {
      // Calculate maximum integer for number of integer bits
     max_int_ = 1;
-    for (int i = 0; i < INT_BITS-1; i++){
+    for (int i = 0; i < INT_BITS; i++){
         max_int_ *= 2;
     }
     max_int_ -= 1;
@@ -383,7 +383,7 @@ void FixedPoint<INT_BITS,FRAC_BITS>::Init() {
         delta_ /= 2;
     }
 
-    max_frac_ = 1- delta_;
+    max_frac_ = 1 - delta_;
     max_num_ = max_int_ + 1 - delta_;
     min_num_ = min_int_ - 1 + delta_;
 
@@ -629,8 +629,21 @@ datatype abs(datatype x) {
     }
 }
 
-
+template class FixedPoint<32,32>;
 template class FixedPoint<5,32>;
+template class FixedPoint<4,32>;
+template class FixedPoint<3,32>;
+template class FixedPoint<2,32>;
+template class FixedPoint<1,32>;
+template class FixedPoint<0,32>;
+
+template class FixedPoint<16,16>;
+template class FixedPoint<12,12>;
+template class FixedPoint<8,8>;
+template class FixedPoint<4,4>;
+template class FixedPoint<2,2>;
+template class FixedPoint<1,0>;
+
 template class FixedPoint<4,32>;
 template class FixedPoint<3,32>;
 template class FixedPoint<2,32>;
