@@ -4,18 +4,18 @@ The current implementation works as a wrapper around a floating point, rounding 
 
 Note 1: I assume that one bit is allocated for the sign bit and use 2's complement logic.
 Note 2: Because this uses templates, it may be necessary to add a specific template to the bottom of fixedpoint.hpp:
-```
+```c++
 template class FixedPoint<YOUR_INT_BITS,YOUR_FRAC_BITS>;
 ```
 
 
 Format:
-```
+```c++
 FixedPoint<INT_BITS, FRAC_BTS>
 ```
 
 Basic Use:
-```
+```c++
 #include "fixedpoint.hpp"
 FixedPoint<2,2> myfixed;
 ```
